@@ -1,5 +1,5 @@
 {
-  "name": "api-users",
+  "name": "branch-12-12-21-relations",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -22,15 +22,11 @@
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
-    "@nestjs/config": "^1.1.5",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
-    "@nestjs/typeorm": "^8.0.2",
-    "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0",
-    "typeorm": "^0.2.41"
+    "rxjs": "^7.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
