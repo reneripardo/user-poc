@@ -3,8 +3,12 @@ import {
     Column,
     Entity,
     BeforeInsert,
+    ManyToMany,
+    JoinTable,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
+import { Compromisse } from 'src/compromisse/compromisse.entity';
+import { Address } from 'src/address/address.entity';
 
 @Entity()
 export class User {
@@ -33,4 +37,12 @@ export class User {
     hashPassword(){
       this.password = hashSync(this.password, 10)
     }
+
+    @ManyToMany(() => Compromisse, (compromisse) => compromisse.rel_compromisse_user)
+    @JoinTable()
+    rel_user_compromisse: Compromisse[];
+
+    @ManyToMany(() => Address, (address) => address.rel_address_user)
+    @JoinTable()
+    rel_user_address: Address[];
 }

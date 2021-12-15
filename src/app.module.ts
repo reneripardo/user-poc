@@ -3,6 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { User } from './user/user.entity';
+import { Compromisse } from './compromisse/compromisse.entity';
+import { Address } from './address/address.entity';
 
 
 @Module({
@@ -19,7 +22,7 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: true, 
       logging: true
     }as TypeOrmModuleOptions),
-    //TypeOrmModule.forFeature([Employee, ContactInfo, Meeting, Task])
+    TypeOrmModule.forFeature([User, Compromisse,Address])
   ],
   controllers: [AppController],
   providers: [AppService],
