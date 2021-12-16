@@ -12,25 +12,25 @@ export class Address {
     id: number;
 
     @Column({name: "street", default: null})
-    street?: string
+    street: string
 
     @Column({name: "district", default: null})
-    district?: string
+    district: string
 
     @Column({name: "cep", default: null})
-    cep?: number
+    cep: number
 
     @Column({name: "state", default: null})
-    state?: string
+    state: string
 
     @Column({name: "city", default: null})
-    city?: string
+    city: string
 
     @Column({name: "number", default: null})
-    number?: number
+    number: number
 
     @Column({name: "complement", default: null})
-    complement?: string
+    complement: string
 
     @ManyToMany(() => Address, address => address.rel_address_user)
     rel_address_user: User[];
