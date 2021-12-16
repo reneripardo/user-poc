@@ -2,7 +2,6 @@ import { IsNotEmpty, IsEmail, Matches } from 'class-validator';
 import { messasgesHelper } from "../helps/messages.helps";
 import { RegExHelper } from "../helps/regex.help";
 
-
 export class CreateUserDto {
     @IsNotEmpty()
     name: string;

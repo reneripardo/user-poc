@@ -7,7 +7,6 @@ import {
     ManyToMany,
 } from 'typeorm';
 
-
 @Entity()
 export class Compromisse {
     @PrimaryGeneratedColumn()

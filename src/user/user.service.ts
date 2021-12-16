@@ -6,7 +6,6 @@ import { Address } from "./entities/address.entity";
 import { Compromisse } from "./entities/compromisse.entity";
 import { User } from "./entities/user.entity";
 
-
 @Injectable()
 export class UserService {
     constructor(

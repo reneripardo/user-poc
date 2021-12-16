@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  //para reconhecer DTO method
+  //para reconhecer dto method
   app.useGlobalPipes(new ValidationPipe({
     transform: true
   }));
