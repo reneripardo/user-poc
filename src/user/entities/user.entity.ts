@@ -7,8 +7,8 @@ import {
     JoinTable,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
-import { Compromisse } from 'src/compromisse/compromisse.entity';
-import { Address } from 'src/address/address.entity';
+import { Compromisse } from 'src/user/entities/compromisse.entity';
+import { Address } from 'src/user/entities/address.entity';
 
 @Entity()
 export class User {
