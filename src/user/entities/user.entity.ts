@@ -15,22 +15,22 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
     
-    @Column({name: 'name'})
+    @Column({name: 'name', default: null})
     name: string;
 
-    @Column({name: 'password'})
+    @Column({name: 'password', default: null})
     password: string;
 
-    @Column({name: 'email'})
+    @Column({name: 'email', default: null})
     email: string;
 
-    @Column({name: 'telephone'})
+    @Column({name: 'telephone', default: null})
     telephone: string;
 
     @Column({name: 'is_active', default: false})
     is_active: boolean;
 
-    @Column({name: 'profile'})
+    @Column({name: 'profile', default: null})
     profile: string;
 
     @BeforeInsert() // faz hash antes do typeorm inserir no banco

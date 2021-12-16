@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, Matches } from "class-validator";
+import { IsNotEmpty, IsEmail, Matches } from 'class-validator';
 import { messasgesHelper } from "../helps/messages.helps";
 import { RegExHelper } from "../helps/regex.help";
 
@@ -6,9 +6,6 @@ import { RegExHelper } from "../helps/regex.help";
 export class CreateUserDto {
     @IsNotEmpty()
     name: string;
-
-    @IsNotEmpty()
-    profile: string;
 
     @IsNotEmpty()
     @Matches(RegExHelper.password, {message: messasgesHelper.PASSWORD_VALID}) //para regex gr3at@3wdsG
@@ -20,6 +17,9 @@ export class CreateUserDto {
 
     @IsNotEmpty()
     telephone: string;
+
+    @IsNotEmpty()
+    profile: string;
 
     @IsNotEmpty()
     street: string;

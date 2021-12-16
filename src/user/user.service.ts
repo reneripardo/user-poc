@@ -19,15 +19,21 @@ export class UserService {
     ){}
 
     async create_user(data: CreateUserDto) {
-        const user = this.user_entity.create(data);
-        this.user_entity.save(user);
+        const user = await this.user_entity.create(data);
+    
+        const address = await this.address_entity.create(data);
+        await this.address_entity.save(address);
+
+        user.rel_user_address = [address];
+        address.rel_address_user = [user];
         
-        return await {
-            "id": user?.id, 
-            "name": user?.name, 
-            "active": user?.is_active 
+        const user_save = await this.user_entity.save(user);
+
+        return {
+            "id": user_save.id,
+            "name": user_save.name,
+            "active": user_save.is_active
         }
       }
-
 
 }
