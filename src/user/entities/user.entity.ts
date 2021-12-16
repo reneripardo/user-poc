@@ -27,7 +27,7 @@ export class User {
     @Column({name: 'telephone'})
     telephone: string;
 
-    @Column({name: 'is_active'})
+    @Column({name: 'is_active', default: false})
     is_active: boolean;
 
     @Column({name: 'profile'})
@@ -38,11 +38,11 @@ export class User {
       this.password = hashSync(this.password, 10)
     }
 
-    @ManyToMany(() => Compromisse, (compromisse) => compromisse.rel_compromisse_user)
+    @ManyToMany(() => Compromisse, (compromisse) => compromisse.rel_compromisse_user, {onDelete: 'CASCADE'})
     @JoinTable()
     rel_user_compromisse: Compromisse[];
 
-    @ManyToMany(() => Address, (address) => address.rel_address_user)
+    @ManyToMany(() => Address, (address) => address.rel_address_user, {onDelete: 'CASCADE'})
     @JoinTable()
     rel_user_address: Address[];
 }
