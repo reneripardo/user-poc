@@ -4,6 +4,9 @@ import { RegExHelper } from "../helps/regex.help";
 
 export class CreateUserDto {
     @IsNotEmpty()
+    name: string;
+
+    @IsNotEmpty()
     @Matches(RegExHelper.password, {message: messasgesHelper.PASSWORD_VALID}) //para regex gr3at@3wdsG
     password: string
 
@@ -37,4 +40,13 @@ export class CreateUserDto {
 
     @IsNotEmpty()
     complement: string;
+}
+
+export class CreateUserByAdminDto {
+    @IsNotEmpty()
+    name: string;
+
+    @IsNotEmpty()
+    @IsEmail()
+    email: string;
 }

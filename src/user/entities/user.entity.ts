@@ -18,7 +18,7 @@ export class User {
     @Column({name: 'name', default: null})
     name: string;
 
-    @Column({name: 'password', default: null})
+    @Column({name: 'password', default: "User@12345"})
     password: string;
 
     @Column({name: 'email', default: null})
