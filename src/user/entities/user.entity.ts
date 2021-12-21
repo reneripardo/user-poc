@@ -5,6 +5,10 @@ import {
     BeforeInsert,
     ManyToMany,
     JoinTable,
+    OneToMany,
+    OneToOne,
+    JoinColumn,
+    CreateDateColumn,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
 import { Compromisse } from 'src/user/entities/compromisse.entity';
@@ -33,16 +37,18 @@ export class User {
     @Column({name: 'profile', default: null})
     profile: string;
 
+    @CreateDateColumn({ name: 'created_at' })
+    createdAt: string;
+
     @BeforeInsert() // faz hash antes do typeorm inserir no banco
     hashPassword(){
       this.password = hashSync(this.password, 10)
     }
 
-    @ManyToMany(() => Compromisse, (compromisse) => compromisse.rel_compromisse_user, {onDelete: 'CASCADE'})
-    @JoinTable()
+    @OneToMany(() => Compromisse, compromisse => compromisse.rel_compromisse_user, {onDelete: 'CASCADE'})
     rel_user_compromisse: Compromisse[];
 
-    @ManyToMany(() => Address, (address) => address.rel_address_user, {onDelete: 'CASCADE'})
-    @JoinTable()
-    rel_user_address: Address[];
+    @OneToOne(() => Address)
+    @JoinColumn()
+    rel_user_address: Address;
 }

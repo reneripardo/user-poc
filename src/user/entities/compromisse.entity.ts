@@ -5,6 +5,8 @@ import {
     Entity,
     CreateDateColumn,
     ManyToMany,
+    ManyToOne,
+    OneToMany,
 } from 'typeorm';
 
 @Entity()
@@ -27,6 +29,9 @@ export class Compromisse {
     @Column({name: "email", default: null})
     email: string
 
-    @ManyToMany(() => User, user => user.rel_user_address)
-    rel_compromisse_user: User[];
+    @CreateDateColumn({ name: 'created_at' })
+    createdAt: string;
+
+    @ManyToOne(() => User, user => user.rel_user_address)
+    rel_compromisse_user: User;
 }

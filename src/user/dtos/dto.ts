@@ -2,7 +2,9 @@ import { IsNotEmpty, IsEmail, Matches } from 'class-validator';
 import { messasgesHelper } from "../helps/messages.helps";
 import { RegExHelper } from "../helps/regex.help";
 
+
 export class CreateUserDto {
+    //@ApiProper
     @IsNotEmpty()
     name: string;
 
@@ -49,4 +51,14 @@ export class CreateUserByAdminDto {
     @IsNotEmpty()
     @IsEmail()
     email: string;
+}
+
+export class SigninDto {
+    @IsNotEmpty()
+    @IsEmail()
+    email: string;
+
+    @IsNotEmpty()
+    @Matches(RegExHelper.password, {message: messasgesHelper.PASSWORD_VALID}) //para regex gr3at@3wdsG
+    password: string
 }

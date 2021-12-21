@@ -1,8 +1,10 @@
-import { Body, Controller, Param, Post } from "@nestjs/common";
-import { CreateUserDto, CreateUserByAdminDto } from "./dtos/dto";
+import { Body, Controller, Param, Post, UseGuards } from "@nestjs/common";
+import { CreateUserDto, CreateUserByAdminDto, SigninDto } from "./dtos/dto";
 import { UserService } from "./user.service";
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('api/v1')
+//@UseGuards(AuthGuard('jwt'))
 export class UserController{
     constructor(private readonly userService: UserService){}
 
@@ -13,6 +15,7 @@ export class UserController{
     }
 
     //2.	ADMIN cadastra usuário
+    @UseGuards(AuthGuard('jwt'))
     @Post(':id_user/signup')
     async create_user_by_admin(
         @Body() createUserByAdminDto: CreateUserByAdminDto, 
@@ -20,4 +23,5 @@ export class UserController{
     ) {
         return this.userService.createUserByAdminService(id_user, createUserByAdminDto);
     }
+    
 }

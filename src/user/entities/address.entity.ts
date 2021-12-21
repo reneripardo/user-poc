@@ -4,6 +4,8 @@ import {
     Column,
     Entity,
     ManyToMany,
+    OneToOne,
+    CreateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -32,6 +34,9 @@ export class Address {
     @Column({name: "complement", default: null})
     complement: string
 
-    @ManyToMany(() => Address, address => address.rel_address_user)
-    rel_address_user: User[];
+    @CreateDateColumn({ name: 'created_at' })
+    createdAt: string;
+
+    @OneToOne(() => Address)
+    rel_address_user: User;
 }
