@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsEmail, Matches } from 'class-validator';
+import { PrimaryGeneratedColumn } from 'typeorm';
 import { messasgesHelper } from "../helps/messages.helps";
 import { RegExHelper } from "../helps/regex.help";
 
@@ -61,4 +62,34 @@ export class SigninDto {
     @IsNotEmpty()
     @Matches(RegExHelper.password, {message: messasgesHelper.PASSWORD_VALID}) //para regex gr3at@3wdsG
     password: string
+}
+
+export class IdFriendshipDto {
+    @IsNotEmpty()
+    id_friendship: number;
+}
+
+export class CreateCompromiseDto {
+    @IsNotEmpty()
+    day_compromisse: Date
+
+    @IsNotEmpty()
+    day_reminder: Date
+
+    @IsNotEmpty()
+    description: string
+
+    @IsNotEmpty()
+    local: string
+
+    @IsNotEmpty()
+    category: string
+
+    @IsNotEmpty()
+    email: string
+}
+
+export class EmailDto {
+    @IsNotEmpty()
+    email: string
 }

@@ -9,6 +9,7 @@ import {
     OneToOne,
     JoinColumn,
     CreateDateColumn,
+    ManyToOne,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
 import { Compromisse } from 'src/user/entities/compromisse.entity';
@@ -45,8 +46,8 @@ export class User {
       this.password = hashSync(this.password, 10)
     }
 
-    @OneToMany(() => Compromisse, compromisse => compromisse.rel_compromisse_user, {onDelete: 'CASCADE'})
-    rel_user_compromisse: Compromisse[];
+    @OneToMany(() => Compromisse, compromise => compromise.rel_compromise_user)
+    rel_user_compromise: Compromisse[];
 
     @OneToOne(() => Address)
     @JoinColumn()

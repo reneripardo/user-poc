@@ -10,6 +10,6 @@ export class AuthController {
     @Post('signin')
     //3.	Acessar conta
     async signin(@Req() req: any) {
-      return await this.authService.login(req.user);
+      return await this.authService.signin(req.user);
     }
 }

@@ -11,7 +11,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async login(user) {
+  async signin(user) {
     const payload = { sub: user.id, email: user.email };
 
     return {
